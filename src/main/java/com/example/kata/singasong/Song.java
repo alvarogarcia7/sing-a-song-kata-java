@@ -34,8 +34,11 @@ public class Song {
         {
             int i = 3;
             paragraphs.add(new IntermediateParagraph(args[i], "Fancy that to swallow a " + args[3] + "!", selectAnimalsUpTo(args, i)));
+        } {
+            int i = 4;
+            paragraphs.add(new IntermediateParagraph(args[i], "What a hog, to swallow a " + args[4] + "!", selectAnimalsUpTo(args, i)));
         }
-        for (int i = 4; i < args.length - 1; i++) {
+        for (int i = 5; i < args.length - 1; i++) {
             paragraphs.add(new IntermediateParagraph(args[i], "", selectAnimalsUpTo(args, i)));
         }
         paragraphs.add(new FinalParagraph(args[args.length - 1]));
@@ -55,16 +58,8 @@ public class Song {
         verses.addAll(this.paragraphs.get(1).generateContent());
         verses.addAll(this.paragraphs.get(2).generateContent());
         verses.addAll(this.paragraphs.get(3).generateContent());
+        verses.addAll(this.paragraphs.get(4).generateContent());
         List<String> restOfIntermediateVerses = new ArrayList<>(Arrays.asList(
-
-                "There was an old lady who swallowed a " + args[4] + ";",
-                "What a hog, to swallow a " + args[4] + "!",
-                "She swallowed the " + args[4] + " to catch the " + args[3] + ",",
-                "She swallowed the " + args[3] + " to catch the " + args[2] + ",",
-                "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
-                "",
                 "There was an old lady who swallowed a " + args[5] + ";",
                 "I don't know how she swallowed a " + args[5] + "!",
                 "She swallowed the " + args[5] + " to catch the " + args[4] + ",",
