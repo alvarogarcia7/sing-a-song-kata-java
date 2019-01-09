@@ -2,6 +2,7 @@ package com.example.kata.singasong;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -31,10 +32,8 @@ public class Song {
     }
 
     private void printOn(PrintStream printStream) {
-        String song = Stream.of("There was an old lady who swallowed a " + args[0] + ".",
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
-                "",
-                "There was an old lady who swallowed a " + args[1] + ";",
+        List<String> strings = new ArrayList<>(Arrays.asList(firstParagraph()));
+        List<String> rest = new ArrayList<>(Arrays.asList("There was an old lady who swallowed a " + args[1] + ";",
                 "That wriggled and wiggled and tickled inside her.",
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
@@ -70,8 +69,16 @@ public class Song {
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
                 "",
                 "There was an old lady who swallowed a " + args[6] + "...",
-                "...She's dead, of course!").collect(Collectors.joining("\n"));
+                "...She's dead, of course!"));
+        strings.addAll(rest);
+        String song = strings.stream().collect(Collectors.joining("\n"));
 
         printStream.println(song);
+    }
+
+    private String[] firstParagraph() {
+        return new String[]{"There was an old lady who swallowed a " + args[0] + ".",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                ""};
     }
 }
