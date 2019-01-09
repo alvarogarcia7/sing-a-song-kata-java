@@ -1,6 +1,6 @@
 package com.example.kata.singasong;
 
-class Song {
+public class Song {
 
     public static void main(String[] args) {
 
