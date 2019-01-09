@@ -31,8 +31,8 @@ public class Song {
     }
 
     private void printOn(PrintStream printStream) {
-        List<String> strings = this.paragraphs.get(0).generateContent();
-        List<String> rest = new ArrayList<>(Arrays.asList("There was an old lady who swallowed a " + args[1] + ";",
+        List<String> verses = this.paragraphs.get(0).generateContent();
+        List<String> intermediateVerses = new ArrayList<>(Arrays.asList("There was an old lady who swallowed a " + args[1] + ";",
                 "That wriggled and wiggled and tickled inside her.",
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
@@ -67,9 +67,9 @@ public class Song {
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
                 ""));
-        strings.addAll(rest);
-        strings.addAll(this.paragraphs.get(this.paragraphs.size() - 1).generateContent());
-        String song = strings.stream().collect(Collectors.joining("\n"));
+        verses.addAll(intermediateVerses);
+        verses.addAll(this.paragraphs.get(this.paragraphs.size() - 1).generateContent());
+        String song = verses.stream().collect(Collectors.joining("\n"));
 
         printStream.println(song);
     }
