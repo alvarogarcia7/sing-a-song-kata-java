@@ -13,7 +13,7 @@ public class SongTest {
         ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(resultStream));
 
-        Song.main(new String[0]);
+        Song.main(new String[]{"fly"});
 
         Approvals.verify(resultStream.toString());
     }
