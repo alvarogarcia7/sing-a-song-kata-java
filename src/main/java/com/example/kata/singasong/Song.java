@@ -42,7 +42,7 @@ public class Song {
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";\n" +
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
                 "\n" +
-                "There was an old lady who swallowed a horse...\n" +
+                "There was an old lady who swallowed a " + args[6] + "...\n" +
                 "...She's dead, of course!";
 
         System.out.println(song);
