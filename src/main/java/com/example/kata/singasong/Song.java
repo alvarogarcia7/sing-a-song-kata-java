@@ -23,28 +23,30 @@ public class Song {
     private static List<Paragraph> buildParagraphs(String[] args) {
         List<Paragraph> paragraphs = new ArrayList<>();
         paragraphs.add(new InitialParagraph(args[0]));
-        for (int i = 1; i < args.length - 1; i++) {
-            paragraphs.add(new IntermediateParagraph(args[i], selectAnimalsUpTo(args, i)));
+        {
+            int i = 1;
+            paragraphs.add(new IntermediateParagraph(args[i], "That wriggled and wiggled and tickled inside her.", selectAnimalsUpTo(args, i)));
+        }
+        for (int i = 2; i < args.length - 1; i++) {
+            paragraphs.add(new IntermediateParagraph(args[i], "How absurd to swallow a " + args[i] + ".", selectAnimalsUpTo(args, i)));
         }
         paragraphs.add(new FinalParagraph(args[args.length - 1]));
         return paragraphs;
     }
 
-    private static String[] selectAnimalsUpTo(String[] args, int i) {
-        return new String[]{args[i - 1]};
+    private static String[] selectAnimalsUpTo(String[] args, int includedUpperBound) {
+        List<String> selected = new ArrayList<>();
+        for (int i = 0; i <= includedUpperBound; i++) {
+            selected.add(args[i]);
+        }
+        return selected.toArray(new String[0]);
     }
 
     private void printOn(PrintStream printStream) {
         List<String> verses = this.paragraphs.get(0).generateContent();
-        List<String> firstIntermediateVerses = this.paragraphs.get(1).generateContent();
-        verses.addAll(firstIntermediateVerses);
+        verses.addAll(this.paragraphs.get(1).generateContent());
+        verses.addAll(this.paragraphs.get(2).generateContent());
         List<String> restOfIntermediateVerses = new ArrayList<>(Arrays.asList(
-                "There was an old lady who swallowed a " + args[2] + ";",
-                "How absurd to swallow a " + args[2] + ".",
-                "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
-                "",
                 "There was an old lady who swallowed a " + args[3] + ";",
                 "Fancy that to swallow a " + args[3] + "!",
                 "She swallowed the " + args[3] + " to catch the " + args[2] + ",",
