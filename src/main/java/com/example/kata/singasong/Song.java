@@ -24,10 +24,14 @@ public class Song {
         List<Paragraph> paragraphs = new ArrayList<>();
         paragraphs.add(new InitialParagraph(args[0]));
         for (int i = 1; i < args.length - 1; i++) {
-            paragraphs.add(new IntermediateParagraph(args[i], args[i-1]));
+            paragraphs.add(new IntermediateParagraph(args[i], selectAnimalsUpTo(args, i)));
         }
         paragraphs.add(new FinalParagraph(args[args.length - 1]));
         return paragraphs;
+    }
+
+    private static String[] selectAnimalsUpTo(String[] args, int i) {
+        return new String[]{args[i - 1]};
     }
 
     private void printOn(PrintStream printStream) {
