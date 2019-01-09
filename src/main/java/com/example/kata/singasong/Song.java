@@ -40,13 +40,10 @@ public class Song {
     }
 
     private void printOn(PrintStream printStream) {
-        List<String> verses = this.paragraphs.get(0).generateContent();
-        verses.addAll(this.paragraphs.get(1).generateContent());
-        verses.addAll(this.paragraphs.get(2).generateContent());
-        verses.addAll(this.paragraphs.get(3).generateContent());
-        verses.addAll(this.paragraphs.get(4).generateContent());
-        verses.addAll(this.paragraphs.get(5).generateContent());
-        verses.addAll(this.paragraphs.get(this.paragraphs.size() - 1).generateContent());
+        List<String> verses = new ArrayList<>();
+        for (Paragraph paragraph : this.paragraphs) {
+            verses.addAll(paragraph.generateContent());
+        }
         String song = verses.stream().collect(Collectors.joining("\n"));
 
         printStream.println(song);
