@@ -1,5 +1,7 @@
 package com.example.kata.singasong;
 
+import java.util.List;
+
 public interface Paragraph {
-    String generateContent();
+    List<String> generateContent();
 }

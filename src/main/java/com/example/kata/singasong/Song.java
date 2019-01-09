@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Song {
 
@@ -32,7 +31,7 @@ public class Song {
     }
 
     private void printOn(PrintStream printStream) {
-        List<String> strings = new ArrayList<>(Arrays.asList(firstParagraph()));
+        List<String> strings = firstParagraph();
         List<String> rest = new ArrayList<>(Arrays.asList("There was an old lady who swallowed a " + args[1] + ";",
                 "That wriggled and wiggled and tickled inside her.",
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
@@ -76,9 +75,7 @@ public class Song {
         printStream.println(song);
     }
 
-    private String[] firstParagraph() {
-        return new String[]{"There was an old lady who swallowed a " + args[0] + ".",
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
-                ""};
+    private List<String> firstParagraph() {
+        return new InitialParagraph(args[0]).generateContent();
     }
 }
