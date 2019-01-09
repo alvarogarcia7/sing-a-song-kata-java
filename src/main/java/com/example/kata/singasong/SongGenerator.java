@@ -4,17 +4,19 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
-public class Song {
+public class SongGenerator {
 
     private final List<Paragraph> paragraphs;
 
-    public Song(List<Paragraph> paragraphs) {
+    public SongGenerator(List<Paragraph> paragraphs) {
         this.paragraphs = paragraphs;
     }
 
     public static void main(String[] args) {
-        new Song(buildParagraphs(args)).printOn(System.out);
+        Song song = new SongGenerator(buildParagraphs(args)).execute();
+        song.printOn(System.out);
     }
 
     private static List<Paragraph> buildParagraphs(String[] args) {
@@ -33,13 +35,43 @@ public class Song {
         return Arrays.copyOfRange(args, 0, includedUpperBound + 1);
     }
 
-    private void printOn(PrintStream printStream) {
+    private Song execute() {
         List<String> verses = new ArrayList<>();
         for (Paragraph paragraph : this.paragraphs) {
             verses.addAll(paragraph.generateContent());
         }
-        String song = String.join("\n", verses);
+        return new Song(verses);
+    }
 
-        printStream.println(song);
+    public class Song {
+        private final List<String> verses;
+
+        public Song(List<String> verses) {
+            this.verses = verses;
+        }
+
+        public void printOn(PrintStream printStream) {
+            printStream.println(String.join("\n", verses));
+        }
+
+        @Override
+        public String toString() {
+            return "Song{" +
+                    "verses=" + verses +
+                    '}';
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Song song = (Song) o;
+            return Objects.equals(verses, song.verses);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(verses);
+        }
     }
 }

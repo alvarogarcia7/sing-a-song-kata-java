@@ -1,6 +1,6 @@
 package com.example.kata.singasong.test;
 
-import com.example.kata.singasong.Song;
+import com.example.kata.singasong.SongGenerator;
 import org.approvaltests.Approvals;
 import org.junit.Test;
 
@@ -13,7 +13,7 @@ public class SongTest {
         ByteArrayOutputStream resultStream = new ByteArrayOutputStream();
         System.setOut(new PrintStream(resultStream));
 
-        Song.main(new String[]{"fly", "spider", "bird", "cat", "dog", "cow", "horse"});
+        SongGenerator.main(new String[]{"fly", "spider", "bird", "cat", "dog", "cow", "horse"});
 
         Approvals.verify(resultStream.toString());
     }
