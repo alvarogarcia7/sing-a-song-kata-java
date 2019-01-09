@@ -51,7 +51,7 @@ public class SongGenerator {
         }
 
         public void printOn(PrintStream printStream) {
-            printStream.println(String.join("\n", verses));
+            verses.forEach(printStream::println);
         }
 
         @Override
