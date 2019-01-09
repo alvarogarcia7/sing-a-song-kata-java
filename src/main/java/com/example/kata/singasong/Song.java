@@ -4,20 +4,17 @@ import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Song {
 
     private final List<Paragraph> paragraphs;
-    private final String[] args;
 
-    public Song(List<Paragraph> paragraphs, String[] args) {
+    public Song(List<Paragraph> paragraphs) {
         this.paragraphs = paragraphs;
-        this.args = args;
     }
 
     public static void main(String[] args) {
-        new Song(buildParagraphs(args), args).printOn(System.out);
+        new Song(buildParagraphs(args)).printOn(System.out);
     }
 
     private static List<Paragraph> buildParagraphs(String[] args) {
