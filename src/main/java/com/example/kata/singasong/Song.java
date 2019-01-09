@@ -3,6 +3,8 @@ package com.example.kata.singasong;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Song {
 
@@ -29,46 +31,46 @@ public class Song {
     }
 
     private void printOn(PrintStream printStream) {
-        String song = "There was an old lady who swallowed a " + args[0] + ".\n" +
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a " + args[1] + ";\n" +
-                "That wriggled and wiggled and tickled inside her.\n" +
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";\n" +
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a " + args[2] + ";\n" +
-                "How absurd to swallow a " + args[2] + ".\n" +
-                "She swallowed the " + args[2] + " to catch the " + args[1] + ",\n" +
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";\n" +
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a " + args[3] + ";\n" +
-                "Fancy that to swallow a " + args[3] + "!\n" +
-                "She swallowed the " + args[3] + " to catch the " + args[2] + ",\n" +
-                "She swallowed the " + args[2] + " to catch the " + args[1] + ",\n" +
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";\n" +
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a " + args[4] + ";\n" +
-                "What a hog, to swallow a " + args[4] + "!\n" +
-                "She swallowed the " + args[4] + " to catch the " + args[3] + ",\n" +
-                "She swallowed the " + args[3] + " to catch the " + args[2] + ",\n" +
-                "She swallowed the " + args[2] + " to catch the " + args[1] + ",\n" +
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";\n" +
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a " + args[5] + ";\n" +
-                "I don't know how she swallowed a " + args[5] + "!\n" +
-                "She swallowed the " + args[5] + " to catch the " + args[4] + ",\n" +
-                "She swallowed the " + args[4] + " to catch the " + args[3] + ",\n" +
-                "She swallowed the " + args[3] + " to catch the " + args[2] + ",\n" +
-                "She swallowed the " + args[2] + " to catch the " + args[1] + ",\n" +
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";\n" +
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
-                "\n" +
-                "There was an old lady who swallowed a " + args[6] + "...\n" +
-                "...She's dead, of course!";
+        String song = Stream.of("There was an old lady who swallowed a " + args[0] + ".",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                "",
+                "There was an old lady who swallowed a " + args[1] + ";",
+                "That wriggled and wiggled and tickled inside her.",
+                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                "",
+                "There was an old lady who swallowed a " + args[2] + ";",
+                "How absurd to swallow a " + args[2] + ".",
+                "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
+                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                "",
+                "There was an old lady who swallowed a " + args[3] + ";",
+                "Fancy that to swallow a " + args[3] + "!",
+                "She swallowed the " + args[3] + " to catch the " + args[2] + ",",
+                "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
+                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                "",
+                "There was an old lady who swallowed a " + args[4] + ";",
+                "What a hog, to swallow a " + args[4] + "!",
+                "She swallowed the " + args[4] + " to catch the " + args[3] + ",",
+                "She swallowed the " + args[3] + " to catch the " + args[2] + ",",
+                "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
+                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                "",
+                "There was an old lady who swallowed a " + args[5] + ";",
+                "I don't know how she swallowed a " + args[5] + "!",
+                "She swallowed the " + args[5] + " to catch the " + args[4] + ",",
+                "She swallowed the " + args[4] + " to catch the " + args[3] + ",",
+                "She swallowed the " + args[3] + " to catch the " + args[2] + ",",
+                "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
+                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
+                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
+                "",
+                "There was an old lady who swallowed a " + args[6] + "...",
+                "...She's dead, of course!").collect(Collectors.joining("\n"));
 
         printStream.println(song);
     }
