@@ -31,7 +31,7 @@ public class Song {
     }
 
     private void printOn(PrintStream printStream) {
-        List<String> strings = firstParagraph();
+        List<String> strings = this.paragraphs.get(0).generateContent();
         List<String> rest = new ArrayList<>(Arrays.asList("There was an old lady who swallowed a " + args[1] + ";",
                 "That wriggled and wiggled and tickled inside her.",
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
@@ -73,9 +73,5 @@ public class Song {
         String song = strings.stream().collect(Collectors.joining("\n"));
 
         printStream.println(song);
-    }
-
-    private List<String> firstParagraph() {
-        return new InitialParagraph(args[0]).generateContent();
     }
 }
