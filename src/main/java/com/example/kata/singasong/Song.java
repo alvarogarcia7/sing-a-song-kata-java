@@ -44,7 +44,7 @@ public class Song {
         for (Paragraph paragraph : this.paragraphs) {
             verses.addAll(paragraph.generateContent());
         }
-        String song = verses.stream().collect(Collectors.joining("\n"));
+        String song = String.join("\n", verses);
 
         printStream.println(song);
     }
