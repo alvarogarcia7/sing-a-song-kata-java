@@ -66,10 +66,9 @@ public class Song {
                 "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
-                "",
-                "There was an old lady who swallowed a " + args[6] + "...",
-                "...She's dead, of course!"));
+                ""));
         strings.addAll(rest);
+        strings.addAll(this.paragraphs.get(this.paragraphs.size() - 1).generateContent());
         String song = strings.stream().collect(Collectors.joining("\n"));
 
         printStream.println(song);
