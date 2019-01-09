@@ -1,9 +1,34 @@
 package com.example.kata.singasong;
 
+import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Song {
 
-    public static void main(String[] args) {
+    private final List<Paragraph> paragraphs;
+    private final String[] args;
 
+    public Song(List<Paragraph> paragraphs, String[] args) {
+        this.paragraphs = paragraphs;
+        this.args = args;
+    }
+
+    public static void main(String[] args) {
+        new Song(buildParagraphs(args), args).printOn(System.out);
+    }
+
+    private static List<Paragraph> buildParagraphs(String[] args) {
+        List<Paragraph> paragraphs = new ArrayList<>();
+        paragraphs.add(new InitialParagraph(args[0]));
+        for (int i = 1; i < args.length - 1; i++) {
+            paragraphs.add(new IntermediateParagraph(args[i]));
+        }
+        paragraphs.add(new FinalParagraph(args[args.length - 1]));
+        return paragraphs;
+    }
+
+    private void printOn(PrintStream printStream) {
         String song = "There was an old lady who swallowed a " + args[0] + ".\n" +
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!\n" +
                 "\n" +
@@ -45,6 +70,6 @@ public class Song {
                 "There was an old lady who swallowed a " + args[6] + "...\n" +
                 "...She's dead, of course!";
 
-        System.out.println(song);
+        printStream.println(song);
     }
 }
