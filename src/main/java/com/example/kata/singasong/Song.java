@@ -2,7 +2,6 @@ package com.example.kata.singasong;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,27 +22,11 @@ public class Song {
     private static List<Paragraph> buildParagraphs(String[] args) {
         List<Paragraph> paragraphs = new ArrayList<>();
         paragraphs.add(new InitialParagraph(args[0]));
-        {
-            int i = 1;
-            paragraphs.add(new IntermediateParagraph(args[i], "That wriggled and wiggled and tickled inside her.", selectAnimalsUpTo(args, i)));
-        }
-        {
-            int i = 2;
-            paragraphs.add(new IntermediateParagraph(args[i], "How absurd to swallow a " + args[i] + ".", selectAnimalsUpTo(args, i)));
-        }
-        {
-            int i = 3;
-            paragraphs.add(new IntermediateParagraph(args[i], "Fancy that to swallow a " + args[3] + "!", selectAnimalsUpTo(args, i)));
-        }
-        {
-            int i = 4;
-            paragraphs.add(new IntermediateParagraph(args[i], "What a hog, to swallow a " + args[4] + "!", selectAnimalsUpTo(args, i)));
-        }
-        {
-            int i = 5;
-            paragraphs.add(new IntermediateParagraph(args[i], "I don't know how she swallowed a " + args[5] + "!"
-                    , selectAnimalsUpTo(args, i)));
-        }
+        paragraphs.add(new IntermediateParagraph(args[1], "That wriggled and wiggled and tickled inside her.", selectAnimalsUpTo(args, 1)));
+        paragraphs.add(new IntermediateParagraph(args[2], "How absurd to swallow a " + args[2] + ".", selectAnimalsUpTo(args, 2)));
+        paragraphs.add(new IntermediateParagraph(args[3], "Fancy that to swallow a " + args[3] + "!", selectAnimalsUpTo(args, 3)));
+        paragraphs.add(new IntermediateParagraph(args[4], "What a hog, to swallow a " + args[4] + "!", selectAnimalsUpTo(args, 4)));
+        paragraphs.add(new IntermediateParagraph(args[5], "I don't know how she swallowed a " + args[5] + "!", selectAnimalsUpTo(args, 5)));
         paragraphs.add(new FinalParagraph(args[args.length - 1]));
         return paragraphs;
     }
