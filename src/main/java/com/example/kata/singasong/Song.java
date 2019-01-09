@@ -24,7 +24,7 @@ public class Song {
         List<Paragraph> paragraphs = new ArrayList<>();
         paragraphs.add(new InitialParagraph(args[0]));
         for (int i = 1; i < args.length - 1; i++) {
-            paragraphs.add(new IntermediateParagraph(args[i]));
+            paragraphs.add(new IntermediateParagraph(args[i], args[i-1]));
         }
         paragraphs.add(new FinalParagraph(args[args.length - 1]));
         return paragraphs;
@@ -32,11 +32,9 @@ public class Song {
 
     private void printOn(PrintStream printStream) {
         List<String> verses = this.paragraphs.get(0).generateContent();
-        List<String> intermediateVerses = new ArrayList<>(Arrays.asList("There was an old lady who swallowed a " + args[1] + ";",
-                "That wriggled and wiggled and tickled inside her.",
-                "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
-                "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
-                "",
+        List<String> firstIntermediateVerses = this.paragraphs.get(1).generateContent();
+        verses.addAll(firstIntermediateVerses);
+        List<String> restOfIntermediateVerses = new ArrayList<>(Arrays.asList(
                 "There was an old lady who swallowed a " + args[2] + ";",
                 "How absurd to swallow a " + args[2] + ".",
                 "She swallowed the " + args[2] + " to catch the " + args[1] + ",",
@@ -67,7 +65,7 @@ public class Song {
                 "She swallowed the " + args[1] + " to catch the " + args[0] + ";",
                 "I don't know why she swallowed a " + args[0] + " - perhaps she'll die!",
                 ""));
-        verses.addAll(intermediateVerses);
+        verses.addAll(restOfIntermediateVerses);
         verses.addAll(this.paragraphs.get(this.paragraphs.size() - 1).generateContent());
         String song = verses.stream().collect(Collectors.joining("\n"));
 
