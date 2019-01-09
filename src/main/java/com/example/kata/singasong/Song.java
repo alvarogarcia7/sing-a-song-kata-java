@@ -2,6 +2,7 @@ package com.example.kata.singasong;
 
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,11 +33,7 @@ public class Song {
     }
 
     private static String[] selectAnimalsUpTo(String[] args, int includedUpperBound) {
-        List<String> selected = new ArrayList<>();
-        for (int i = 0; i <= includedUpperBound; i++) {
-            selected.add(args[i]);
-        }
-        return selected.toArray(new String[0]);
+        return Arrays.copyOfRange(args, 0, includedUpperBound + 1);
     }
 
     private void printOn(PrintStream printStream) {
